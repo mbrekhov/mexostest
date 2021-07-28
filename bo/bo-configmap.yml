@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bo-config
+  labels:
+    app: bo
+data:
+  maildefaultuser: user
+  mexospostgresqlhost: db.com
+  mexosaffnetpassword: pasdb
+  mailsmtppassword: user
+  mexosreportspassword: user
+  mexospostgresqldatabase: mexos
+  maildefaultsenderaddress: user@ya.ru
+  mexosaffnetusername: pasdb
+  mailsmtpport: "587"
+  mailhostname: localhost
+  mexosreportsusername: user
