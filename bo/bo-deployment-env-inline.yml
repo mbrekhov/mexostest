@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bo
+  labels:
+    app: bo
+spec:
+  selector:
+    matchLabels:
+      app: bo
+  template:
+    metadata:
+      labels:
+        app: bo
+    spec:
+      containers:
+        - image: bo:latest
+          imagePullPolicy: Never
+          name: bo
+          env:
+            - name: mexospostgresqlhost
+              value: "db.com"
+            - name: mexospostgresqldatabase
+              value: "dbname"
+            - name: mexosreportsusername
+              value: "bouser"
+            - name: mexosaffnetpassword
+              value: "bopass"
+            - name: mexosaffnetusername
+              value: "bouser"
+            - name: mexosreportsusername
+              value: "bopass"
+            - name: mexosreportspassword
+              value: "bopass"
+            - name: mailhostname
+              value: "localhost"
+            - name: mailsmtpport
+              value: "587"
+            - name: mailsmtppassword
+              value: "bopass"
+            - name: maildefaultsenderaddress
+              value: "xxx@ya.ru"
+            - name: maildefaultuser
+              value: "xxx"
+          ports:
+            - containerPort: 10080
+              name: http
+          command: ["/home/mexos/bo-angular-backend.jar"]
+          args: ["start"]
+
