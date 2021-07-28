@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bo
+  labels:
+    app: bo
+spec:
+  selector:
+    matchLabels:
+      app: bo
+  template:
+    metadata:
+      labels:
+        app: bo
+    spec:
+      containers:
+        - image: bo:latest
+          imagePullPolicy: Never
+          name: bo
+          envFrom:
+            - configMapRef:
+                name: bo-config
+          ports:
+            - containerPort: 10080
+              name: http
+          command: ["/home/mexos/bo-angular-backend.jar"]
+          args: ["start"]
